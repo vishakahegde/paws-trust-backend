@@ -152,6 +152,9 @@ app.post("/authorized_post_request", authMiddleWare, (req, res) => {
 
 app.use("/", authRouter);
 
+const dogRouter = require("./routers/dog");
+app.use("/dog", dogRouter);
+
 // Listen for connections on specified port (default is port 4000)
 
 app.listen(PORT, () => {
