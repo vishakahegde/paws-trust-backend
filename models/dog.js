@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   dog.associate = function (models) {
-    // associations can be defined here
+    dog.hasMany(models.adopter);
   };
   return dog;
 };
