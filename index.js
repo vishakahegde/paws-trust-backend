@@ -7,6 +7,8 @@ const authMiddleWare = require("./auth/middleware");
 
 const app = express();
 
+app.use(corsMiddleWare());
+
 /**
  * Middlewares
  *
