@@ -123,7 +123,7 @@ if (process.env.DELAY) {
 
 // GET endpoint for testing purposes, can be removed
 app.get("/", (req, res) => {
-  res.send("Hi from express");
+  res.send("Hi from Paws Trust API");
 });
 
 // POST endpoint for testing purposes, can be removed
