@@ -4,7 +4,7 @@ const Adopter = require("../models/").adopter;
 const authMiddleware = require("../auth/middleware");
 
 const sgMail = require("@sendgrid/mail");
-const { SENDGRID_APIKEY, FROM_EMAIL } = require("../config/constants");
+const { FROM_EMAIL } = require("../config/constants");
 
 const router = new Router();
 
@@ -49,11 +49,11 @@ router.post("/", authMiddleware, async (req, res, next) => {
 
     const dog = await Dog.findByPk(dogId);
 
-    sgMail.setApiKey(SENDGRID_APIKEY);
+    sgMail.setApiKey(process.env.SENDGRID_APIKEY);
     const msg = {
       to: email,
       //to: "hegde.vishaka@gmail.com",
-      from: FROM_EMAIL,
+      from: process.env.FROM_EMAIL,
       subject: `Adoption request received for ${dog.name}`,
       //text: "We have received the adoption request",
       html: `<h2>Hi There!</h2><h4>We have received your adoption request for 
