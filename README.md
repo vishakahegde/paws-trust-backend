@@ -29,4 +29,4 @@ Link to the server - https://paws-trust-backend.herokuapp.com
 
 ## Database Model Chart
 
-https://app.lucidchart.com/invitations/accept/38f0d764-0edc-49ea-b6c4-6907c910f135
+https://app.lucidchart.com/documents/view/625c0512-7f83-4859-9ca6-97cecceff229/0_0
