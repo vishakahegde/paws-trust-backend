@@ -2,9 +2,9 @@ const { Router } = require("express");
 const Dog = require("../models/").dog;
 const Adopter = require("../models/").adopter;
 const authMiddleware = require("../auth/middleware");
+require("dotenv").config();
 
 const sgMail = require("@sendgrid/mail");
-const { FROM_EMAIL } = require("../config/constants");
 
 const router = new Router();
 
@@ -49,6 +49,9 @@ router.post("/", authMiddleware, async (req, res, next) => {
 
     const dog = await Dog.findByPk(dogId);
 
+    console.log(process.env.SENDGRID_APIKEY);
+    console.log(process.env.FROM_EMAIL);
+
     sgMail.setApiKey(process.env.SENDGRID_APIKEY);
     const msg = {
       to: email,
@@ -57,7 +60,7 @@ router.post("/", authMiddleware, async (req, res, next) => {
       subject: `Adoption request received for ${dog.name}`,
       //text: "We have received the adoption request",
       html: `<h2>Hi There!</h2><h4>We have received your adoption request for 
-      ${dog.name}</h4>
+      ${dog.name}.</h4>
       <p> We will review your request for adoption and contact you as soon as possible.</p>
       <br/>
       <p>Warm Regards,</p>
