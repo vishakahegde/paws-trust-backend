@@ -15,16 +15,17 @@ Link to the server - https://paws-trust-backend.herokuapp.com
 
 ## Endpoints
 
-/dogs/ - This is a GET call. This endpoint will retrieve all the available dogs from database.
-/dogs/:id - This is a GET call. This enpoint will retrieve a particular dog detail based on ID value provided.
-/adopter/ - This is a POST call. This endpoint will insert the adopter details into the database. This call requires authentication with bearer token.
-
-/ - This a GET call. This is to test if the server is running.
-/echo - This is a POST call. To test POST requests.
-/signup - This is a POST call. To create a new user and get a token.
-/login - This is a POST call. To get a token with email and password.
-/me - This is a GET call. To get information of the User.
-/authorized_post_request - This is a POST call. To test POST requests which requires token.
+| Method | Path                       | Purpose                                | required parameters                                           | auth |
+| ------ | -------------------------- | -------------------------------------- | ------------------------------------------------------------- | ---- |
+| GET    | '/'                        | Test if your server is running         | none                                                          | no   |
+| POST   | '/echo'                    | Test POST requests                     | none                                                          | no   |
+| POST   | '/signup'                  | Create a new user and get a token      | email, name, password                                         | no   |
+| POST   | '/login'                   | Get a token with email & password      | email, password                                               | no   |
+| GET    | '/me'                      | Get information of this user           | none                                                          | yes  |
+| POST   | '/authorized_post_request' | Test POST requests (token required)    | none                                                          | yes  |
+| GET    | '/dogs'                    | Retrieve all dogs from database        | none                                                          | no   |
+| GET    | '/dogs/:id'                | Retrieve dog details based on ID       | id                                                            | no   |
+| POST   | '/adopter'                 | Insert adopter details to the database | name,email,phone,address,city,province,postcode,country,dogId | yes  |
 
 ## Database Model Chart
 
