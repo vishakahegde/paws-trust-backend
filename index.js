@@ -7,6 +7,8 @@ const authMiddleWare = require("./auth/middleware");
 
 const app = express();
 
+app.use(corsMiddleWare());
+
 /**
  * Middlewares
  *
@@ -121,7 +123,7 @@ if (process.env.DELAY) {
 
 // GET endpoint for testing purposes, can be removed
 app.get("/", (req, res) => {
-  res.send("Hi from express");
+  res.send("Hi from Paws Trust API");
 });
 
 // POST endpoint for testing purposes, can be removed
@@ -151,6 +153,12 @@ app.post("/authorized_post_request", authMiddleWare, (req, res) => {
 });
 
 app.use("/", authRouter);
+
+const dogRouter = require("./routers/dog");
+app.use("/dogs", dogRouter);
+
+const adopterRouter = require("./routers/adopter");
+app.use("/adopter", adopterRouter);
 
 // Listen for connections on specified port (default is port 4000)
 
